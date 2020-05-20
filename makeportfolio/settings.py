@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'about',
     'service',
     'skill',
+    'education',
+    
 ]
 
 MIDDLEWARE = [
