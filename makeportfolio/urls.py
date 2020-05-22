@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import index_page
+from .views import index_page, dashboard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
+    path('dashboard/', dashboard, name='dashboard'),
 ]
