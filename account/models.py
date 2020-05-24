@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
-
-from .helper import get_current_user
+from django.contrib.sessions.models import Session
 
 
 class UserManager(BaseUserManager):
@@ -32,7 +31,6 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
         return self._create_user(email, password, **extra_fields)
     
-
 
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('first name'), max_length=150, blank=True)
@@ -76,6 +74,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
+
+def get_current_user():
+    active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
+    user_id_list = []
+    for session in active_sessions:
+        data = session.get_decoded()
+        user_id_list.append(data.get('_auth_user_id', None))
+    user = User.objects.get(id=user_id_list[0])
+    return user
+
+
 class Profile(models.Model):
     current_user = get_current_user
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
@@ -97,5 +106,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.phone_number
-
-
