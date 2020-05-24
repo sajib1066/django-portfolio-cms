@@ -3,6 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
+from .helper import get_current_user
+
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password, **extra_fields):
@@ -73,5 +75,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_full_name(self):
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
+
+class Profile(models.Model):
+    current_user = get_current_user
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
+    photo = models.ImageField(upload_to='profile_photo/')
+    gender_choice = (
+        ('male', 'Male'),
+        ('female', 'Female')
+    )
+    gender = models.CharField(choices=gender_choice, max_length=6)
+    about = models.TextField()
+    phone_number = models.CharField(max_length=11, unique=True)
+    facebook = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    youtube = models.URLField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.phone_number
 
 
