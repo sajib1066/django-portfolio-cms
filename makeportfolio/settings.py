@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 3rd party apps
 
     # local apps
+    'account',
     'home',
     'about',
     'service',
