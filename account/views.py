@@ -30,3 +30,7 @@ def authentication(request):
         'registration': registrationforms
     }
     return render(request, 'dashboard/login.html', context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('authentication')
