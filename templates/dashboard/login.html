@@ -31,7 +31,8 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form method="POST">
+              {% csrf_token %}
               <h1>Login Form</h1>
               <div>
                 {{ login.email }}
@@ -40,7 +41,7 @@
                 {{ login.password }}
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Log in</a>
+                <button type="submit" class="btn btn-default">Log in</button>
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 
