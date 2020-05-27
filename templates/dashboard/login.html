@@ -66,10 +66,14 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form>
+            <form method="POST">
+              {% csrf_token %}
               <h1>Create Account</h1>
               <div>
-                {{ registration.username }}
+                {{ registration.first_name }}
+              </div>
+              <div>
+                {{ registration.last_name }}
               </div>
               <div>
                 {{ registration.email }}
@@ -78,7 +82,8 @@
                 {{ registration.password }}
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
+                <!-- <a class="btn btn-default submit" href="index.html">Submit</a> -->
+                <button class="btn btn-default submit">Register</button>
               </div>
 
               <div class="clearfix"></div>

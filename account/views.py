@@ -2,12 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from .forms import LoginForm, RegistrationForm
+from .models import User, Profile
 
 def authentication(request):
     loginforms = LoginForm()
     registrationforms = RegistrationForm()
     if request.method == 'POST':
         loginforms = LoginForm(request.POST)
+        registrationforms = RegistrationForm(request.POST)
         if loginforms.is_valid():
             email = loginforms.cleaned_data['email']
             password = loginforms.cleaned_data['password']
@@ -15,6 +17,14 @@ def authentication(request):
             if user:
                 login(request, user)
                 return redirect('dashboard')
+        if registrationforms.is_valid():
+            first_name = registrationforms.cleaned_data['first_name']
+            last_name = registrationforms.cleaned_data['last_name']
+            email = registrationforms.cleaned_data['email']
+            password = registrationforms.cleaned_data['password']
+            User.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)
+            return redirect('authentication')
+            
     context = {
         'login': loginforms,
         'registration': registrationforms
