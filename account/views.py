@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def authentication(request):
+    return render(request, 'dashboard/login.html')
