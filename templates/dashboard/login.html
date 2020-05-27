@@ -34,10 +34,10 @@
             <form>
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                {{ login.email }}
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                {{ login.password }}
               </div>
               <div>
                 <a class="btn btn-default submit" href="index.html">Log in</a>
@@ -68,13 +68,13 @@
             <form>
               <h1>Create Account</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                {{ registration.username }}
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                {{ registration.email }}
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                {{ registration.password }}
               </div>
               <div>
                 <a class="btn btn-default submit" href="index.html">Submit</a>
