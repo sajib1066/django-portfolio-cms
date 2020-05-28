@@ -8,7 +8,30 @@
                     <h2>Education Info</h2>
                 </div>
                 <div class="card-body">
-                    
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Degree</th>
+                                <th>Board</th>
+                                <th>Institute</th>
+                                <th>Passing Year</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for edu in education %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ edu.degree }}</td>
+                                <td>{{ edu.board }}</td>
+                                <td>{{ edu.institute }}</td>
+                                <td>{{ edu.passing_year }}</td>
+                                <td>{{ edu.result }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
