@@ -58,12 +58,12 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg align-items-center">
-                        <a class="navbar-brand" href="index.html">makeportfolio</a>
+                        <a class="navbar-brand" href="{% url 'home' %}">makeportfolio</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fancyNav" aria-controls="fancyNav" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
                         <div class="collapse navbar-collapse" id="fancyNav">
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="static-page.html">Blog</a>
@@ -428,7 +428,7 @@
                             <nav>
                                 <ul>
                                     <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Agency</a></li>
-                                    <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
+                                    <li><a href="{% url 'home' %}"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Home</a></li>
                                     <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Studio</a></li>
                                     <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> About</a></li>
                                     <li><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Studio</a></li>

@@ -23,7 +23,7 @@ from . import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page, name='index'),
+    path('', index_page, name='home'),
     path('account/', include('account.urls')),
     path('dashboard/', dashboard, name='dashboard'),
 ]
