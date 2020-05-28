@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-# Create your views here.
+from .models import Education
+from .forms import EducationForm
+
+def education(request):
+    forms = EducationForm(request.POST or None)
+    if forms.is_valid():
+        forms.save()
+        return redirect('dashboard')
+    context = {
+        'forms': forms
+    }
+    return render(request, 'dashboard/education.html', context)
