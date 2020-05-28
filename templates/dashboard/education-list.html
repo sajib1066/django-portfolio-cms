@@ -8,6 +8,7 @@
                     <h2>Education Info</h2>
                 </div>
                 <div class="card-body">
+                    {% if education %}
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -32,6 +33,9 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    {% else %}
+                    <p>No Education Info</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
