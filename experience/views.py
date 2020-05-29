@@ -25,3 +25,10 @@ def add_experience(request):
         'forms': forms
     }
     return render(request, 'dashboard/add-exprience.html', context)
+
+def experience_list(request):
+    experience = Experience.objects.filter(user=request.user)
+    context = {
+        'experience': experience
+    }
+    return render(request, 'dashboard/experience-list.html', context)
