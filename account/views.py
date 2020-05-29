@@ -45,7 +45,7 @@ def user_profile(request, user_id):
         forms = ProfileForm(request.POST, request.FILES, instance=profile)
         if forms.is_valid():
             forms.save()
-            return redirect('dashboard')
+            # return redirect('dashboard')
     # forms = ProfileForm()
     context = {
         'forms': forms
