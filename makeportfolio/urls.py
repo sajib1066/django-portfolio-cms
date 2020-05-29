@@ -28,6 +28,7 @@ urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
     path('education/', include('education.urls')),
     path('experience/', include('experience.urls')),
+    path('skill/', include('skill.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

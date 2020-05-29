@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import MySkill, Skill
+from .models import Skill
 
-admin.site.register(MySkill)
 admin.site.register(Skill)
