@@ -3,11 +3,24 @@ from django.shortcuts import render, redirect
 from .models import Education
 from .forms import EducationForm
 
-def education(request):
+def create_education(request):
     forms = EducationForm(request.POST or None)
     if forms.is_valid():
-        forms.save()
-        return redirect('dashboard')
+        user = request.user
+        degree = forms.cleaned_data['degree']
+        board = forms.cleaned_data['board']
+        institute = forms.cleaned_data['institute']
+        passing_year = forms.cleaned_data['passing_year']
+        result = forms.cleaned_data['result']
+        Education.objects.create(
+            user=user,
+            degree=degree,
+            board=board,
+            institute=institute,
+            passing_year=passing_year,
+            result=result
+        )
+        return redirect('education-list')
     context = {
         'forms': forms
     }
