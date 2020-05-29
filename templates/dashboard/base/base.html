@@ -27,7 +27,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+                <h2>{{ request.user.profile.first_name }} {{ request.user.profile.last_name }}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -68,13 +68,13 @@
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                     {% if request.user.profile.photo %}
-                    <img src="{{ request.user.profile.photo.url }}" alt="">{{ request.user.first_name }} {{ request.user.last_name }}
+                    <img src="{{ request.user.profile.photo.url }}" alt="">{{ request.user.profile.first_name }} {{ request.user.profile.last_name }}
                     {% else %}
-                    <img src="{% static 'dashboard/images/img.jpg' %}" alt="">{{ request.user.first_name }} {{ request.user.last_name }}
+                    <img src="{% static 'dashboard/images/img.jpg' %}" alt="">{{ request.user.profile.first_name }} {{ request.user.profile.last_name }}
                     {% endif %}
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                    <a class="dropdown-item"  href="{% url 'profile' request.user.id %}"> Profile</a>
                       <a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>

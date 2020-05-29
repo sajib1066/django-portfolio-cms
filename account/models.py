@@ -33,8 +33,6 @@ class UserManager(BaseUserManager):
     
 
 class User(AbstractBaseUser, PermissionsMixin):
-    first_name = models.CharField(_('first name'), max_length=150, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email address'), unique=True)
     is_staff = models.BooleanField(
         _('staff status'),
@@ -88,15 +86,17 @@ def get_current_user():
 class Profile(models.Model):
     current_user = get_current_user
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
-    username = models.CharField(max_length=30, unique=True)
-    photo = models.ImageField(upload_to='profile_photo/')
+    first_name = models.CharField(_('first name'), max_length=150)
+    last_name = models.CharField(_('last name'), max_length=150)
+    username = models.CharField(max_length=30, unique=True, blank=True, null=True)
+    photo = models.ImageField(upload_to='profile_photo/', blank=True, null=True)
     gender_choice = (
         ('male', 'Male'),
         ('female', 'Female')
     )
-    gender = models.CharField(choices=gender_choice, max_length=6)
-    about = models.TextField()
-    phone_number = models.CharField(max_length=11, unique=True)
+    gender = models.CharField(choices=gender_choice, max_length=6, blank=True, null=True)
+    about = models.TextField(blank=True, null=True)
+    phone_number = models.CharField(max_length=11, unique=True, blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
@@ -106,4 +106,4 @@ class Profile(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username
+        return str(self.user)
