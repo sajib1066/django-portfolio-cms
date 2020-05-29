@@ -86,8 +86,7 @@ def get_current_user():
 class Profile(models.Model):
     current_user = get_current_user
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
-    first_name = models.CharField(_('first name'), max_length=150)
-    last_name = models.CharField(_('last name'), max_length=150)
+    name = models.CharField(_('first name'), max_length=150)
     username = models.CharField(max_length=30, unique=True, blank=True, null=True)
     photo = models.ImageField(upload_to='profile_photo/', blank=True, null=True)
     gender_choice = (

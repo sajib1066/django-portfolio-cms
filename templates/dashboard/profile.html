@@ -10,6 +10,7 @@
             <div class="card-body">
                 <form action="{% url 'profile' request.user.id %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <img src="{{ forms.photo.url }}" alt="">
                     {{ forms.as_p }}
                     <button type="submit" class="btn btn-success" style="width: 200px; margin-left: 300px;">Update</button>
                 </form>

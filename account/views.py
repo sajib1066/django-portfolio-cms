@@ -20,10 +20,11 @@ def authentication(request):
         if registrationforms.is_valid():
             first_name = registrationforms.cleaned_data['first_name']
             last_name = registrationforms.cleaned_data['last_name']
+            name = first_name + ' ' + last_name
             email = registrationforms.cleaned_data['email']
             password = registrationforms.cleaned_data['password']
             user = User.objects.create_user(email=email, password=password)
-            Profile.objects.create(user=user, first_name=first_name, last_name=last_name)
+            Profile.objects.create(user=user, name=name)
             return redirect('authentication')
             
     context = {
@@ -45,8 +46,6 @@ def user_profile(request, user_id):
         forms = ProfileForm(request.POST, request.FILES, instance=profile)
         if forms.is_valid():
             forms.save()
-            # return redirect('dashboard')
-    # forms = ProfileForm()
     context = {
         'forms': forms
     }
