@@ -1,7 +1,8 @@
 {% extends 'dashboard/base/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -16,5 +17,33 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <form method="post">
+        <div class="card">
+            <div class="card-body">
+                {% csrf_token %}
+                <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.degree|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.board|as_crispy_field }}
+                </div>
+                </div>
+                {{ forms.institute|as_crispy_field }}
+                <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.passing_year|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.result|as_crispy_field }}
+                </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary text-center">Add Education</button>
+            </div>
+        </div>
+      </form>
 {% endblock %}

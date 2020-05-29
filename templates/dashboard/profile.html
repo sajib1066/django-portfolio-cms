@@ -2,22 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<!-- <div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h2>Update Profile</h2>
-            </div>
-            <div class="card-body">
-                <form action="{% url 'profile' request.user.id %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ forms|crispy }}
-                    <button type="submit" class="btn btn-success" style="width: 200px; margin-left: 300px;">Update</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
 <form action="{% url 'profile' request.user.id %}" method="post" enctype="multipart/form-data">
     <div class="card">
         <div class="card-body">
