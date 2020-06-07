@@ -19,11 +19,12 @@ from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 from .views import index_page, dashboard
 from . import settings
-
+from account.views import view_portfolio
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='home'),
+    path('usr/<str:username>/', view_portfolio, name='view-portfolio'),
     path('account/', include('account.urls')),
     path('dashboard/', dashboard, name='dashboard'),
     path('education/', include('education.urls')),

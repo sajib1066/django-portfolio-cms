@@ -63,3 +63,9 @@ def profile_setting(request, user_id):
         'form': forms
     }
     return render(request, 'dashboard/setting.html', context)
+
+def view_portfolio(request, username):
+    profile = Profile.objects.get(username=username)
+    user = Profile.objects.get(user=profile.user)
+    theme = SelectedTheme.objects.get(user=user.user)
+    return render(request, f'theme/{theme}/{theme}.html')
