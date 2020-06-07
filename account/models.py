@@ -106,3 +106,20 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+
+class Theme(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    preview = models.ImageField(upload_to='theme-preview/')
+    theme_url = models.URLField()
+
+    def __str__(self):
+        return self.name
+
+
+class SelectedTheme(models.Model):
+    theme = models.ForeignKey(Theme, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey('account.User', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.theme.name
