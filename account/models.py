@@ -111,7 +111,7 @@ class Profile(models.Model):
 class Theme(models.Model):
     name = models.CharField(max_length=30, unique=True)
     preview = models.ImageField(upload_to='theme-preview/')
-    theme_url = models.URLField()
+    theme_url = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return self.name
