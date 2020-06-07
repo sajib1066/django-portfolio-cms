@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Profile
+from .models import Profile, SelectedTheme
 
 
 class LoginForm(forms.Form):
@@ -33,3 +33,10 @@ class ProfileForm(forms.ModelForm):
             'github': forms.TextInput(attrs={'class': 'form-control'}),
             'youtube': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+class SelectedThemeForm(forms.ModelForm):
+    class Meta:
+        model = SelectedTheme
+        fields = ['theme']
+
