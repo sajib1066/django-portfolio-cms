@@ -1,15 +1,19 @@
 {% extends 'dashboard/base/base.html' %}
+{% load static  %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-4">
             <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
+                <a href="{% url 'default-theme' %}">
+                    <div class="card-body">
+                        <img src="{% static 'dashboard/theme-img/default-theme.png' %}" alt="" height="100%" width="100%">
+                        <!-- <div style="height: 200px; width: 200px; color: #fff;">
+                            <h2 style="text-align: center;">Comming Soon</h2>
+                        </div> -->
                     </div>
-                </div>
-                <div class="card-footer">Theme 1</div>
+                    <div class="card-footer"><a href="{% url 'default-theme' %}">default-theme</a></div>
+                </a>
             </div>
         </div>
         <div class="col-md-4">
