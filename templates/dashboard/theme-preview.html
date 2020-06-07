@@ -1,0 +1,14 @@
+{% extends 'dashboard/base/base.html' %}
+
+{% block content %}
+    <h2>Theme Preview</h2>
+    <div class="card">
+        <div class="card-body">
+            <img src="{{ th.preview.url }}" alt="">
+        </div>
+        <div class="card-footer">
+            <h3>Theme Name: {{ th.name|title }}</h3>
+            <a class="btn btn-success" href="{% url 'default-theme' %}">See Preview</a> <a class="btn btn-primary" href="">Set This Theme</a>
+        </div>
+    </div>
+{% endblock content %}
