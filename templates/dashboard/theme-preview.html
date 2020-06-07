@@ -8,7 +8,7 @@
         </div>
         <div class="card-footer">
             <h3>Theme Name: {{ th.name|title }}</h3>
-            <a class="btn btn-success" href="{% url 'default-theme' %}">See Preview</a> <a class="btn btn-primary" href="">Set This Theme</a>
+            <a class="btn btn-success" href="{% url 'default-theme' %}">See Preview</a> <a class="btn btn-primary" href="{% url 'theme-setup' th.id %}">Set This Theme</a>
         </div>
     </div>
 {% endblock content %}

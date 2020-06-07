@@ -59,7 +59,6 @@ def profile_setting(request, user_id):
         if forms.is_valid():
             forms.save()
     context = {
-        'theme': select_theme,
         'form': forms
     }
     return render(request, 'dashboard/setting.html', context)
