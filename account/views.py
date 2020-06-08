@@ -22,9 +22,12 @@ def authentication(request):
             last_name = registrationforms.cleaned_data['last_name']
             name = first_name + ' ' + last_name
             email = registrationforms.cleaned_data['email']
+            username = registrationforms.cleaned_data['username']
             password = registrationforms.cleaned_data['password']
-            user = User.objects.create_user(email=email, password=password)
-            Profile.objects.create(user=user, name=name)
+            confirm_password = registrationforms.cleaned_data['confirm_password']
+            if password == confirm_password:
+                user = User.objects.create_user(email=email, password=password)
+                Profile.objects.create(user=user, name=name, username=username)
             return redirect('authentication')
             
     context = {
