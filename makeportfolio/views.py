@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from account.models import Theme
+from theme.models import Theme
 
 def index_page(request):
     return render(request, 'home/index.html')

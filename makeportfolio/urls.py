@@ -19,7 +19,7 @@ from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
 
 from .views import index_page, dashboard
 from . import settings
-from account.views import view_portfolio
+from theme.views import view_portfolio
 
 urlpatterns = [
     path('admin/', admin.site.urls),

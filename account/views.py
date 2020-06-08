@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 
-from .forms import LoginForm, RegistrationForm, ProfileForm, SelectedThemeForm
-from .models import User, Profile, SelectedTheme
+from .forms import LoginForm, RegistrationForm, ProfileForm
+from .models import User, Profile
 
 def authentication(request):
     loginforms = LoginForm()
@@ -52,22 +52,3 @@ def user_profile(request, user_id):
         'forms': forms
     }
     return render(request, 'dashboard/profile.html', context)
-
-def profile_setting(request, user_id):
-    user = User.objects.get(id=user_id)
-    select_theme = SelectedTheme.objects.get(user=user)
-    forms = SelectedThemeForm(instance=select_theme)
-    if request.method == 'POST':
-        forms = SelectedThemeForm(request.POST, instance=select_theme)
-        if forms.is_valid():
-            forms.save()
-    context = {
-        'form': forms
-    }
-    return render(request, 'dashboard/setting.html', context)
-
-def view_portfolio(request, username):
-    profile = Profile.objects.get(username=username)
-    user = Profile.objects.get(user=profile.user)
-    theme = SelectedTheme.objects.get(user=user.user)
-    return render(request, f'theme/{theme}/{theme}.html')

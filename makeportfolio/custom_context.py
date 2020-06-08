@@ -1,4 +1,4 @@
-from account.models import Theme
+from theme.models import Theme
 
 def theme_context(request):
     theme = Theme.objects.all()
