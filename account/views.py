@@ -49,6 +49,7 @@ def user_profile(request, user_id):
         if forms.is_valid():
             forms.save()
     context = {
-        'forms': forms
+        'forms': forms,
+        'profile': profile
     }
     return render(request, 'dashboard/profile.html', context)
