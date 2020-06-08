@@ -1,5 +1,6 @@
 {% extends 'dashboard/base/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
 <form action="{% url 'profile' request.user.id %}" method="post" enctype="multipart/form-data">
@@ -11,6 +12,11 @@
                     {{ forms.name|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-4 mb-0">
+                    {% if profile.photo %}
+                    <img src="{{ profile.photo.url }}" alt="">
+                    {% else %}
+                    <img src="{% static 'dashboard/images/img.jpg' %}" alt="Photo">
+                    {% endif %}
                     {{ forms.photo|as_crispy_field }}
                 </div>
             </div>
