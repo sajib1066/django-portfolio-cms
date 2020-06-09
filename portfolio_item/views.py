@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
-from .models import Education
-from .forms import EducationForm
+from .models import Education, Experience
+from .forms import EducationForm, ExperienceForm
 
 def create_education(request):
     forms = EducationForm(request.POST or None)
@@ -33,3 +33,33 @@ def education_list(request):
         'education': education
     }
     return render(request, 'dashboard/education-list.html', context)
+
+def add_experience(request):
+    forms = ExperienceForm(request.POST or None)
+    if forms.is_valid():
+        user = request.user
+        job_title = forms.cleaned_data['job_title']
+        job_context = forms.cleaned_data['job_context']
+        company_name = forms.cleaned_data['company_name']
+        start_date = forms.cleaned_data['start_date']
+        end_date = forms.cleaned_data['end_date']
+        Experience.objects.create(
+            user=user,
+            job_title=job_title,
+            job_context=job_context,
+            company_name=company_name,
+            start_date=start_date,
+            end_date=end_date
+        )
+        return redirect('dashboard')
+    context = {
+        'form': forms
+    }
+    return render(request, 'dashboard/add-exprience.html', context)
+
+def experience_list(request):
+    experience = Experience.objects.filter(user=request.user)
+    context = {
+        'experience': experience
+    }
+    return render(request, 'dashboard/experience-list.html', context)
