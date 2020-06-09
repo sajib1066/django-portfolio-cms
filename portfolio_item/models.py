@@ -30,3 +30,13 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.job_title
+
+class Skill(models.Model):
+    current_user = get_current_user
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    name = models.CharField(max_length=20)
+    persent = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+

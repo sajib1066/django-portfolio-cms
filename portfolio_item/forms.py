@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Education, Experience
+from .models import Education, Experience, Skill
 
 class EducationForm(forms.ModelForm):
     class Meta:
@@ -28,4 +28,14 @@ class ExperienceForm(forms.ModelForm):
             'start_date': forms.TextInput(attrs={'class': 'form-control'}),
             'end_date': forms.TextInput(attrs={'class': 'form-control'}),
         }
-        
+
+
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['name', 'persent']
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'persent': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
