@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     # local apps
     'account',
     'home',
-    'about',
     'work',
     'theme',
     'portfolio_item',
