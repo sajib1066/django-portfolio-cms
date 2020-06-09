@@ -95,6 +95,8 @@ class Profile(models.Model):
     )
     gender = models.CharField(choices=gender_choice, max_length=6, blank=True, null=True)
     about = models.TextField(blank=True, null=True)
+    country = models.CharField(max_length=30, blank=True, null=True)
+    address = models.CharField(max_length=220, blank=True, null=True)
     phone_number = models.CharField(max_length=11, unique=True, blank=True, null=True)
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
