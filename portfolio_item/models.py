@@ -63,11 +63,18 @@ class Skill(models.Model):
         return self.name
 
 
+class PortfolioCategory(models.Model):
+    name = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.name
+
 class Portfolio(models.Model):
     current_user = get_current_user
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='portfolio/')
+    category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE)
     client_name = models.CharField(max_length=120)
     client_review = models.DecimalField(decimal_places=1, max_digits=3)
     client_feedback = models.TextField()
