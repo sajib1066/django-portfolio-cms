@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'about',
     'service',
     'skill',
-    'education',
     'experience',
     'work',
     'theme',

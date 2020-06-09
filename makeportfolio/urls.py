@@ -27,10 +27,10 @@ urlpatterns = [
     path('usr/<str:username>/', view_portfolio, name='view-portfolio'),
     path('account/', include('account.urls')),
     path('dashboard/', dashboard, name='dashboard'),
-    path('education/', include('education.urls')),
     path('experience/', include('experience.urls')),
     path('skill/', include('skill.urls')),
     path('theme/', include('theme.urls')),
+    path('portfolio/', include('portfolio_item.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
