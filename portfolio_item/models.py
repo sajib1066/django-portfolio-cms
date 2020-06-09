@@ -5,6 +5,8 @@ from makeportfolio.helper import get_current_user
 
 
 class About(models.Model):
+    current_user = get_current_user
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
     title = models.CharField(max_length=220)
     about = models.TextField()
     resume = models.FileField(upload_to='resume/')
@@ -14,6 +16,8 @@ class About(models.Model):
 
 
 class Service(models.Model):
+    current_user = get_current_user
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=220)
 
@@ -60,9 +64,13 @@ class Skill(models.Model):
 
 
 class Portfolio(models.Model):
+    current_user = get_current_user
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='portfolio/')
-    client = models.CharField(max_length=120)
+    client_name = models.CharField(max_length=120)
+    client_review = models.DecimalField(decimal_places=1, max_digits=3)
+    client_feedback = models.TextField()
     budjet = models.PositiveIntegerField()
     category = models.CharField(max_length=40)
     duration = models.CharField(max_length=30)
