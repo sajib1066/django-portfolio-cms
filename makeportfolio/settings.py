@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'experience',
     'work',
     'theme',
+    'portfolio_item',
 ]
 
 MIDDLEWARE = [
