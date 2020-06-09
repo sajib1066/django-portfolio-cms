@@ -49,7 +49,7 @@ def profile_setting(request, user_id):
         }
         return render(request, 'dashboard/setting.html', context)
     except:
-        return redirect('default-theme')
+        return redirect('theme-list')
 
 def view_portfolio(request, username):
     profile = Profile.objects.get(username=username)
@@ -58,4 +58,4 @@ def view_portfolio(request, username):
         theme = SelectedTheme.objects.get(user=user.user)
         return render(request, f'theme/{theme}/{theme}.html')
     except:
-        return redirect('default-theme')
+        return redirect('theme-list')
