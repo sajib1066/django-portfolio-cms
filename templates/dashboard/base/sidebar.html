@@ -26,6 +26,7 @@
         </li>
         <li><a><i class="fa fa-clone"></i>Theme <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
+            <li><a href="{% url 'theme-list' %}">All Theme</a></li>
             {% for t in theme %}
             <li><a href="{% url 'theme-preview' t.id %}">{{ t.name|title }} {{ t.id }}</a></li>
             {% endfor %}

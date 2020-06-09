@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import render, redirect
 
 from account.models import Profile, User
@@ -8,6 +8,11 @@ from .models import Theme, SelectedTheme
 class DefaultThemeView(TemplateView):
     template_name = 'theme/default/default.html'
 
+
+class ThemeList(ListView):
+    model = Theme
+    template_name = 'theme/theme-list.html'
+    context_object_name = 'theme'
 
 def theme_preview(request, theme_id):
     theme = Theme.objects.get(id=theme_id)
