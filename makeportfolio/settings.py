@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 
     # local apps
     'account',
-    'work',
     'theme',
     'portfolio_item',
 ]
