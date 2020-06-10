@@ -8,15 +8,15 @@ class Theme(models.Model):
     theme_url = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
-        return self.name
+        return self.file_name
 
 
 class SelectedTheme(models.Model):
-    theme = models.ForeignKey(Theme, on_delete=models.CASCADE, blank=True, null=True)
+    theme = models.ForeignKey(Theme, on_delete=models.CASCADE)
     user = models.ForeignKey('account.User', on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ['theme', 'user']
 
     def __str__(self):
-        return self.theme.name
+        return self.theme.file_name
