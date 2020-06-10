@@ -4,6 +4,7 @@ from django.db import models
 class Theme(models.Model):
     name = models.CharField(max_length=30, unique=True)
     preview = models.ImageField(upload_to='theme-preview/')
+    file_name = models.CharField(max_length=30, unique=True)
     theme_url = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
