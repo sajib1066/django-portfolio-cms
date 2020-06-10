@@ -8,7 +8,7 @@ class Theme(models.Model):
     theme_url = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
-        return self.file_name
+        return self.name
 
 
 class SelectedTheme(models.Model):
