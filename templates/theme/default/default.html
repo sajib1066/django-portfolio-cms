@@ -58,11 +58,11 @@
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
 				{% if request.user.profile.photo %}
-				<div class="author-img" style="background-image: url({{ request.user.profile.photo.url }});"></div>
+				<div class="author-img" style="background-image: url({{ profile.photo.url }});"></div>
 				{% else %}
 				<div class="author-img" style="background-image: url({% static 'theme/default/images/about.jpg' %});"></div>
 				{% endif %}
-				<h1 id="colorlib-logo"><a href="index.html">{{ request.user.profile.name }}</a></h1>
+				<h1 id="colorlib-logo"><a href="#">{{ profile.name }}</a></h1>
 				<span class="position"><a href="#">UI/UX/Designer</a> in Philippines</span>
 			</div>
 			<nav id="colorlib-main-menu" role="navigation" class="navbar">
@@ -106,7 +106,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
 					   				<div class="slider-text-inner js-fullheight">
 					   					<div class="desc">
-						   					<h1>Hi! <br>I'm Jackson</h1>
+						   					<h1>Hi! <br>I'm {{ profile.name }}</h1>
 						   					<h2>100% html5 bootstrap templates Made by <a href="https://colorlib.com/" target="_blank">colorlib.com</a></h2>
 												<p><a class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>
 											</div>

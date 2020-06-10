@@ -56,6 +56,9 @@ def view_portfolio(request, username):
     user = Profile.objects.get(user=profile.user)
     try:
         theme = SelectedTheme.objects.get(user=user.user)
-        return render(request, f'theme/{theme}/{theme}.html')
+        context = {
+            'profile': profile,
+        }
+        return render(request, f'theme/{theme}/{theme}.html', context)
     except:
         return redirect('theme-list')
