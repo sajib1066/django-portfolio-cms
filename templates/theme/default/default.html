@@ -57,7 +57,7 @@
 		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
 		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
 			<div class="text-center">
-				{% if request.user.profile.photo %}
+				{% if profile.photo %}
 				<div class="author-img" style="background-image: url({{ profile.photo.url }});"></div>
 				{% else %}
 				<div class="author-img" style="background-image: url({% static 'theme/default/images/about.jpg' %});"></div>
