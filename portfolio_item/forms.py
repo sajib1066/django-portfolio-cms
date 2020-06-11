@@ -1,6 +1,19 @@
 from django import forms
 
-from .models import Education, Experience, Skill
+from .models import About, Education, Experience, Skill
+
+
+class AboutForm(forms.ModelForm):
+
+
+    class Meta:
+        model = About
+        exclude = ('user',)
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'about': forms.Textarea(attrs={'class': 'form-control'}),
+        }
 
 class EducationForm(forms.ModelForm):
     class Meta:

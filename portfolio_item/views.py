@@ -1,7 +1,33 @@
 from django.shortcuts import render, redirect
 
-from .models import Education, Experience, Skill
-from .forms import EducationForm, ExperienceForm, SkillForm
+from account.models import Profile
+from .models import About, Education, Experience, Skill
+from .forms import AboutForm, EducationForm, ExperienceForm, SkillForm
+
+def create_about(request):
+    usr = request.user
+    profile = Profile.objects.get(user=usr)
+    try:
+        about = About.objects.get(user=profile)
+        forms = AboutForm(instance=about)
+        if request.method == 'POST':
+            forms = AboutForm(request.POST, request.FILES, instance=about)
+            if forms.is_valid():
+                forms.save()
+        context = {
+            'form': forms
+        }
+        return render(request, 'dashboard/about.html', context) 
+    except:
+        forms = AboutForm()
+        if request.method == 'POST':
+            forms = AboutForm(request.POST, request.FILES)
+            if forms.is_valid():
+                forms.save()
+        context = {
+            'form': forms
+        }
+        return render(request, 'dashboard/about.html', context)
 
 def create_education(request):
     forms = EducationForm(request.POST or None)
