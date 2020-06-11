@@ -6,7 +6,7 @@ from makeportfolio.helper import get_current_user, get_user_profile
 
 class About(models.Model):
     profile = get_user_profile
-    user = models.OneToOneField(Profile, on_delete=models.CASCADE, default=profile)
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, default=profile)
     title = models.CharField(max_length=220)
     about = models.TextField()
     resume = models.FileField(upload_to='resume/')
