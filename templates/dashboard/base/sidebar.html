@@ -2,31 +2,15 @@
     <div class="menu_section">
       <h3>General</h3>
       <ul class="nav side-menu">
-        <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+        <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i>Dashboard</a></li>
+        <li><a><i class="fa fa-edit"></i>Create Portfolio <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
-            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-          </ul>
-        </li>
-        <li><a><i class="fa fa-clone"></i>About <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu">
-            <li><a href="{% url 'add-about' %}">Add</a></li>
-          </ul>
-        </li>
-        <li><a><i class="fa fa-clone"></i>Education <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu">
-            <li><a href="{% url 'education' %}">Add</a></li>
-            <li><a href="{% url 'education-list' %}">List</a></li>
-          </ul>
-        </li>
-        <li><a><i class="fa fa-clone"></i>Experience <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu">
-            <li><a href="{% url 'add-experience' %}">Add</a></li>
-            <li><a href="{% url 'experience-list' %}">List</a></li>
-          </ul>
-        </li>
-        <li><a><i class="fa fa-clone"></i>Skill <span class="fa fa-chevron-down"></span></a>
-          <ul class="nav child_menu">
-            <li><a href="{% url 'add-skill' %}">Add</a></li>
+            <li><a href="{% url 'add-about' %}">About</a></li>
+            <li><a href="{% url 'education' %}">Add Education</a></li>
+            <li><a href="{% url 'education-list' %}">Education List</a></li>
+            <li><a href="{% url 'add-experience' %}">Add Experience</a></li>
+            <li><a href="{% url 'experience-list' %}">Experience List</a></li>
+            <li><a href="{% url 'add-skill' %}">Skill</a></li>
           </ul>
         </li>
         <li><a><i class="fa fa-clone"></i>Theme <span class="fa fa-chevron-down"></span></a>
