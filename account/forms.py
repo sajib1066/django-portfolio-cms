@@ -26,7 +26,6 @@ class ProfileForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
-            'about': forms.Textarea(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook': forms.TextInput(attrs={'class': 'form-control'}),
             'twitter': forms.TextInput(attrs={'class': 'form-control'}),
