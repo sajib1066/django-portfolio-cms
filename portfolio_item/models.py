@@ -1,12 +1,12 @@
 from django.db import models
 
-from account.models import User
-from makeportfolio.helper import get_current_user
+from account.models import User, Profile
+from makeportfolio.helper import get_current_user, get_user_profile
 
 
 class About(models.Model):
-    current_user = get_current_user
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default=current_user)
+    profile = get_user_profile
+    user = models.OneToOneField(Profile, on_delete=models.CASCADE, default=profile)
     title = models.CharField(max_length=220)
     about = models.TextField()
     resume = models.FileField(upload_to='resume/')
