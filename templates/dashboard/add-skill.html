@@ -13,12 +13,13 @@
                     <div class="form-group col-md-6 mb-0">
                         {{ form.persent|as_crispy_field }}
                     </div>
+                </div>
             </div>
             <div class="card-footer d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary text-center">Add Skill</button>
             </div>
         </div>
-      </form>
+    </form>
       {% if skill %}
       <div class="row">
         <div class="col-md-12">
@@ -52,4 +53,4 @@
     {% else %}
         <p>No Experience Info</p>
     {% endif %}
-{% endblock %}
+{% endblock content %}
