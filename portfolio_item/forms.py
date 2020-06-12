@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import About, Service, Education, Experience, Skill
+from .models import About, Service, Education, Experience, Skill, Portfolio
 
 
 class AboutForm(forms.ModelForm):
@@ -64,4 +64,25 @@ class SkillForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'persent': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+
+
+class PortfolioForm(forms.ModelForm):
+
+
+    class Meta:
+        model = Portfolio
+        exclude = ('user', )
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'client_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'client_review': forms.TextInput(attrs={'class': 'form-control'}),
+            'client_feedback': forms.TextInput(attrs={'class': 'form-control'}),
+            'budjet': forms.TextInput(attrs={'class': 'form-control'}),
+            'duration': forms.TextInput(attrs={'class': 'form-control'}),
+            'technology': forms.TextInput(attrs={'class': 'form-control'}),
+            'preview': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
         }

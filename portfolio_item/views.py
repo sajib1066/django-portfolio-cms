@@ -1,8 +1,22 @@
 from django.shortcuts import render, redirect
 
 from account.models import Profile
-from .models import About, Service, Education, Experience, Skill
-from .forms import AboutForm, ServiceForm, EducationForm, ExperienceForm, SkillForm
+from .models import (
+    About,
+    Service,
+    Education,
+    Experience,
+    Skill,
+    Portfolio
+)
+from .forms import (
+    AboutForm,
+    ServiceForm,
+    EducationForm,
+    ExperienceForm,
+    SkillForm,
+    PortfolioForm
+)
 
 def create_about(request):
     usr = request.user
@@ -128,3 +142,40 @@ def add_skill(request):
         'skill': skill
     }
     return render(request, 'dashboard/add-skill.html', context)
+
+def add_portfolio_view(request):
+    forms = PortfolioForm()
+    if request.method == 'POST':
+        forms = PortfolioForm(request.POST, request.FILES)
+        if forms.is_valid():
+            user = request.user
+            name = forms.cleaned_data['name']
+            image = forms.cleaned_data['image']
+            category = forms.cleaned_data['category']
+            client_name = forms.cleaned_data['client_name']
+            client_review = forms.cleaned_data['client_review']
+            client_feedback = forms.cleaned_data['client_feedback']
+            budjet = forms.cleaned_data['budjet']
+            duration = forms.cleaned_data['duration']
+            technology = forms.cleaned_data['technology']
+            preview = forms.cleaned_data['preview']
+            description = forms.cleaned_data['description']
+            Portfolio.objects.create(
+                user=user,
+                name=name,
+                image=image,
+                category=category,
+                client_name=client_name,
+                client_review=client_review,
+                client_feedback=client_feedback,
+                budjet=budjet,
+                duration=duration,
+                technology=technology,
+                preview=preview,
+                description=description
+            )
+            return redirect('dashboard')
+    context = {
+        'form': forms
+    }
+    return render(request, 'dashboard/add-portfolio.html', context)
