@@ -136,13 +136,9 @@ def experience_list(request):
 def add_skill(request):
     forms = SkillForm(request.POST or None)
     if forms.is_valid():
-        user = request.user
-        name = forms.cleaned_data['name']
-        persent = forms.cleaned_data['persent']
-        Skill.objects.create(user=user, name=name, persent=persent)
-    usr = request.user
-    profile = Profile.objects.get(user=usr)
-    skill = Skill.objects.filter(user=profile)
+        forms.save()
+    profile = Profile.objects.get(user=request.user)
+    skill = Skill.objects.filter(profile=profile)
     context = {
         'form': forms,
         'skill': skill

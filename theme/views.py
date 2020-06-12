@@ -64,7 +64,7 @@ def view_portfolio(request, username):
     service = Service.objects.filter(profile=profile)
     education = Education.objects.filter(profile=profile)
     experience = Experience.objects.filter(profile=profile)
-    skills = Skill.objects.filter(user=profile)
+    skills = Skill.objects.filter(profile=profile)
     portfolio = Portfolio.objects.filter(profile=profile)
     try:
         theme = SelectedTheme.objects.get(user=user.user)
