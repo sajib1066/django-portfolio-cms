@@ -8,7 +8,7 @@ class AboutForm(forms.ModelForm):
 
     class Meta:
         model = About
-        exclude = ('user',)
+        exclude = ('profile',)
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),

@@ -22,7 +22,7 @@ def create_about(request):
     usr = request.user
     profile = Profile.objects.get(user=usr)
     try:
-        about = About.objects.get(user=profile)
+        about = About.objects.get(profile=profile)
         forms = AboutForm(instance=about)
         if request.method == 'POST':
             forms = AboutForm(request.POST, request.FILES, instance=about)
