@@ -5,7 +5,14 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>Education Info</h2>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h2>Education Info</h2>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'education' %}">Add Education</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     {% if education %}
