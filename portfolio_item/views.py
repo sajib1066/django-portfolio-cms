@@ -47,10 +47,11 @@ def add_service_view(request):
     forms = ServiceForm(request.POST or None)
     if forms.is_valid():
         user = request.user
+        profile = Profile.objects.get(user=user)
         name = forms.cleaned_data['name']
         description = forms.cleaned_data['description']
         Service.objects.create(
-            user=user,
+            profile=profile,
             name=name,
             description=description
         )
@@ -61,7 +62,8 @@ def add_service_view(request):
     return render(request, 'dashboard/add-service.html', context)
 
 def service_list_view(request):
-    service = Service.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    service = Service.objects.filter(profile=profile)
     context = {
         'service': service
     }
