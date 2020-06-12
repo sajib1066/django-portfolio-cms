@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import About, Education, Experience, Skill
+from .models import About, Service, Education, Experience, Skill
 
 
 class AboutForm(forms.ModelForm):
@@ -13,6 +13,19 @@ class AboutForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'about': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+class ServiceForm(forms.ModelForm):
+
+
+    class Meta:
+        model = Service
+        fields = ['name', 'description']
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class EducationForm(forms.ModelForm):

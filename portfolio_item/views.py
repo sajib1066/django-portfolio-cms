@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
 from account.models import Profile
-from .models import About, Education, Experience, Skill
-from .forms import AboutForm, EducationForm, ExperienceForm, SkillForm
+from .models import About, Service, Education, Experience, Skill
+from .forms import AboutForm, ServiceForm, EducationForm, ExperienceForm, SkillForm
 
 def create_about(request):
     usr = request.user
@@ -28,6 +28,23 @@ def create_about(request):
             'form': forms
         }
         return render(request, 'dashboard/about.html', context)
+
+def add_service_view(request):
+    forms = ServiceForm(request.POST or None)
+    if forms.is_valid():
+        user = request.user
+        name = forms.cleaned_data['name']
+        description = forms.cleaned_data['description']
+        Service.objects.create(
+            user=user,
+            name=name,
+            description=description
+        )
+        return redirect('dashboard')
+    context = {
+        'form': forms
+    }
+    return render(request, 'dashboard/add-service.html', context)
 
 def create_education(request):
     forms = EducationForm(request.POST or None)
