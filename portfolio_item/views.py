@@ -71,13 +71,14 @@ def create_education(request):
     forms = EducationForm(request.POST or None)
     if forms.is_valid():
         user = request.user
+        profile = Profile.objects.get(user=user)
         degree = forms.cleaned_data['degree']
         board = forms.cleaned_data['board']
         institute = forms.cleaned_data['institute']
         passing_year = forms.cleaned_data['passing_year']
         result = forms.cleaned_data['result']
         Education.objects.create(
-            user=user,
+            profile=profile,
             degree=degree,
             board=board,
             institute=institute,
@@ -91,7 +92,8 @@ def create_education(request):
     return render(request, 'dashboard/education.html', context)
 
 def education_list(request):
-    education = Education.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    education = Education.objects.filter(profile=profile)
     print(education)
     context = {
         'education': education

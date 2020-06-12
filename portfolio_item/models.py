@@ -26,8 +26,8 @@ class Service(models.Model):
 
 
 class Education(models.Model):
-    current_user = get_current_user
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    user_profile = get_user_profile
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     degree = models.CharField(max_length=220)
     board = models.CharField(max_length=120)
     institute = models.CharField(max_length=220)
@@ -36,7 +36,7 @@ class Education(models.Model):
     comment = models.TextField(blank=True, null=True)
 
     class Meta:
-        unique_together = ['user', 'degree']
+        unique_together = ['profile', 'degree']
 
     def __str__(self):
         return self.degree
