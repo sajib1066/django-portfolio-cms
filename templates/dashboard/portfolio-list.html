@@ -1,0 +1,40 @@
+{% extends 'dashboard/base/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-10">
+                    <h2>Portfolio</h2>
+                </div>
+                <div class="col-md-2">
+                    <a class="btn btn-success" href="{% url 'add-portfolio' %}">Add Portfolio</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            {% if portfolio %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Portfolio Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for portfolio in portfolio %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ portfolio.name }}</td>
+                            <td>{{ portfolio.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No Portfolio Info</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

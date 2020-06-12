@@ -9,7 +9,8 @@ from .views import (
     add_experience,
     experience_list,
     add_skill,
-    add_portfolio_view
+    add_portfolio_view,
+    portfolio_list_view
 )
 
 urlpatterns = [
@@ -21,5 +22,6 @@ urlpatterns = [
     path('add-experience/', add_experience, name='add-experience'),
     path('experience-list/', experience_list, name='experience-list'),
     path('add-skill/', add_skill, name='add-skill'),
-    path('add-portfolio/', add_portfolio_view, name='add-portfolio')
+    path('add-portfolio/', add_portfolio_view, name='add-portfolio'),
+    path('portfolio/', portfolio_list_view, name='portfolio-list')
 ]

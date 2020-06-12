@@ -174,8 +174,15 @@ def add_portfolio_view(request):
                 preview=preview,
                 description=description
             )
-            return redirect('dashboard')
+            return redirect('portfolio-list')
     context = {
         'form': forms
     }
     return render(request, 'dashboard/add-portfolio.html', context)
+
+def portfolio_list_view(request):
+    portfolio = Portfolio.objects.filter(user=request.user)
+    context = {
+        'portfolio': portfolio
+    }
+    return render(request, 'dashboard/portfolio-list.html', context)
