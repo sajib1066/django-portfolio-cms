@@ -40,11 +40,18 @@ def add_service_view(request):
             name=name,
             description=description
         )
-        return redirect('dashboard')
+        return redirect('service')
     context = {
         'form': forms
     }
     return render(request, 'dashboard/add-service.html', context)
+
+def service_list_view(request):
+    service = Service.objects.filter(user=request.user)
+    context = {
+        'service': service
+    }
+    return render(request, 'dashboard/service-list.html', context)
 
 def create_education(request):
     forms = EducationForm(request.POST or None)
