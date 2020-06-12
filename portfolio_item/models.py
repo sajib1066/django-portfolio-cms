@@ -55,7 +55,7 @@ class Experience(models.Model):
 
 class Skill(models.Model):
     user_profile = get_user_profile
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     name = models.CharField(max_length=20)
     persent = models.IntegerField()
 
