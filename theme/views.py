@@ -4,7 +4,13 @@ from django.shortcuts import render, redirect
 from account.models import Profile, User
 from .forms import SelectedThemeForm
 from .models import Theme, SelectedTheme
-from portfolio_item.models import Skill
+from portfolio_item.models import (
+    Service,
+    Education,
+    Experience,
+    Skill,
+    Portfolio
+)
 
 class DefaultThemeView(TemplateView):
     template_name = 'theme/default/default.html'
@@ -55,12 +61,20 @@ def profile_setting(request, user_id):
 def view_portfolio(request, username):
     profile = Profile.objects.get(username=username)
     user = Profile.objects.get(user=profile.user)
+    service = Service.objects.filter(profile=profile)
+    education = Education.objects.filter(profile=profile)
+    experience = Experience.objects.filter(profile=profile)
     skills = Skill.objects.filter(user=profile)
+    portfolio = Portfolio.objects.filter(profile=profile)
     try:
         theme = SelectedTheme.objects.get(user=user.user)
         context = {
             'profile': profile,
-            'skills': skills
+            'service': service,
+            'education': education,
+            'experience': experience,
+            'skills': skills,
+            'portfolio': portfolio
         }
         return render(request, f'theme/{theme}/{theme}.html', context)
     except:
