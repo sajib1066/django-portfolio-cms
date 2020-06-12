@@ -154,7 +154,7 @@ def add_portfolio_view(request):
     if request.method == 'POST':
         forms = PortfolioForm(request.POST, request.FILES)
         if forms.is_valid():
-            user = request.user
+            profile = Profile.objects.get(user=request.user)
             name = forms.cleaned_data['name']
             image = forms.cleaned_data['image']
             category = forms.cleaned_data['category']
@@ -167,7 +167,7 @@ def add_portfolio_view(request):
             preview = forms.cleaned_data['preview']
             description = forms.cleaned_data['description']
             Portfolio.objects.create(
-                user=user,
+                profile=profile,
                 name=name,
                 image=image,
                 category=category,
@@ -187,7 +187,8 @@ def add_portfolio_view(request):
     return render(request, 'dashboard/add-portfolio.html', context)
 
 def portfolio_list_view(request):
-    portfolio = Portfolio.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    portfolio = Portfolio.objects.filter(profile=profile)
     context = {
         'portfolio': portfolio
     }
