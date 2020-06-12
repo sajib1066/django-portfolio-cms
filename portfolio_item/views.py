@@ -105,14 +105,14 @@ def education_list(request):
 def add_experience(request):
     forms = ExperienceForm(request.POST or None)
     if forms.is_valid():
-        user = request.user
+        profile = Profile.objects.get(user=request.user)
         job_title = forms.cleaned_data['job_title']
         job_context = forms.cleaned_data['job_context']
         company_name = forms.cleaned_data['company_name']
         start_date = forms.cleaned_data['start_date']
         end_date = forms.cleaned_data['end_date']
         Experience.objects.create(
-            user=user,
+            profile=profile,
             job_title=job_title,
             job_context=job_context,
             company_name=company_name,
@@ -126,7 +126,8 @@ def add_experience(request):
     return render(request, 'dashboard/add-exprience.html', context)
 
 def experience_list(request):
-    experience = Experience.objects.filter(user=request.user)
+    profile = Profile.objects.get(user=request.user)
+    experience = Experience.objects.filter(profile=profile)
     context = {
         'experience': experience
     }
