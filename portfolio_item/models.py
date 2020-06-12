@@ -1,12 +1,12 @@
 from django.db import models
 
 from account.models import User, Profile
-from makeportfolio.helper import get_current_user, get_user_profile
+from makeportfolio.helper import get_user_profile
 
 
 class About(models.Model):
-    profile = get_user_profile
-    user = models.OneToOneField(Profile, on_delete=models.CASCADE, default=profile)
+    user_profile = get_user_profile
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, default=user_profile)
     title = models.CharField(max_length=220)
     about = models.TextField()
     resume = models.FileField(upload_to='resume/')
@@ -16,8 +16,8 @@ class About(models.Model):
 
 
 class Service(models.Model):
-    current_user = get_current_user
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    user_profile = get_user_profile
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=220)
 
@@ -42,8 +42,8 @@ class Education(models.Model):
         return self.degree
 
 class Experience(models.Model):
-    current_user = get_current_user
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    user_profile = get_user_profile
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     job_title = models.CharField(max_length=220)
     job_context = models.TextField()
     company_name = models.CharField(max_length=120)
@@ -54,8 +54,8 @@ class Experience(models.Model):
         return self.job_title
 
 class Skill(models.Model):
-    profile = get_user_profile
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, default=profile)
+    user_profile = get_user_profile
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     name = models.CharField(max_length=20)
     persent = models.IntegerField()
 
@@ -70,8 +70,8 @@ class PortfolioCategory(models.Model):
         return self.name
 
 class Portfolio(models.Model):
-    current_user = get_current_user
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    user_profile = get_user_profile
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     name = models.CharField(max_length=120)
     image = models.ImageField(upload_to='portfolio/')
     category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE)
