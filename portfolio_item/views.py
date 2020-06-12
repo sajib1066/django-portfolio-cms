@@ -135,8 +135,9 @@ def add_skill(request):
         name = forms.cleaned_data['name']
         persent = forms.cleaned_data['persent']
         Skill.objects.create(user=user, name=name, persent=persent)
-    
-    skill = Skill.objects.filter(user=request.user)
+    usr = request.user
+    profile = Profile.objects.get(user=usr)
+    skill = Skill.objects.filter(user=profile)
     context = {
         'form': forms,
         'skill': skill

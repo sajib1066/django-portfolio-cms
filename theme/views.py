@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from account.models import Profile, User
 from .forms import SelectedThemeForm
 from .models import Theme, SelectedTheme
+from portfolio_item.models import Skill
 
 class DefaultThemeView(TemplateView):
     template_name = 'theme/default/default.html'
@@ -54,10 +55,12 @@ def profile_setting(request, user_id):
 def view_portfolio(request, username):
     profile = Profile.objects.get(username=username)
     user = Profile.objects.get(user=profile.user)
+    skills = Skill.objects.filter(user=profile)
     try:
         theme = SelectedTheme.objects.get(user=user.user)
         context = {
             'profile': profile,
+            'skills': skills
         }
         return render(request, f'theme/{theme}/{theme}.html', context)
     except:

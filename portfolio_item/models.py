@@ -54,8 +54,8 @@ class Experience(models.Model):
         return self.job_title
 
 class Skill(models.Model):
-    current_user = get_current_user
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=current_user)
+    profile = get_user_profile
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, default=profile)
     name = models.CharField(max_length=20)
     persent = models.IntegerField()
 
