@@ -119,7 +119,7 @@ def add_experience(request):
             start_date=start_date,
             end_date=end_date
         )
-        return redirect('dashboard')
+        return redirect('experience-list')
     context = {
         'form': forms
     }
