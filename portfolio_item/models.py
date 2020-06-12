@@ -79,7 +79,6 @@ class Portfolio(models.Model):
     client_review = models.DecimalField(decimal_places=1, max_digits=3)
     client_feedback = models.TextField()
     budjet = models.PositiveIntegerField()
-    category = models.CharField(max_length=40)
     duration = models.CharField(max_length=30)
     technology = models.CharField(max_length=120)
     preview = models.URLField()
