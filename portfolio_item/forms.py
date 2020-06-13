@@ -1,6 +1,14 @@
 from django import forms
 
-from .models import About, Service, Education, Experience, Skill, Portfolio
+from .models import (
+    About,
+    Service,
+    Education,
+    Experience,
+    Skill,
+    Portfolio,
+    ContactDetails
+)
 
 
 class AboutForm(forms.ModelForm):
@@ -29,6 +37,8 @@ class ServiceForm(forms.ModelForm):
         }
 
 class EducationForm(forms.ModelForm):
+
+
     class Meta:
         model = Education
         fields = ['degree', 'board', 'institute', 'passing_year', 'result']
@@ -43,6 +53,8 @@ class EducationForm(forms.ModelForm):
 
 
 class ExperienceForm(forms.ModelForm):
+
+
     class Meta:
         model = Experience
         exclude = ('user', )
@@ -57,6 +69,8 @@ class ExperienceForm(forms.ModelForm):
 
 
 class SkillForm(forms.ModelForm):
+
+
     class Meta:
         model = Skill
         fields = ['name', 'persent']
@@ -85,4 +99,19 @@ class PortfolioForm(forms.ModelForm):
             'technology': forms.TextInput(attrs={'class': 'form-control'}),
             'preview': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+class ContactDetailsForm(forms.ModelForm):
+
+
+    class Meta:
+        model = ContactDetails
+        fields = ['name', 'email', 'phone', 'address']
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.Textarea(attrs={'class': 'form-control'})
         }

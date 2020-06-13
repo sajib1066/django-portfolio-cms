@@ -7,7 +7,8 @@ from .models import (
     Education,
     Experience,
     Skill,
-    Portfolio
+    Portfolio,
+    ContactDetails
 )
 from .forms import (
     AboutForm,
@@ -15,7 +16,8 @@ from .forms import (
     EducationForm,
     ExperienceForm,
     SkillForm,
-    PortfolioForm
+    PortfolioForm,
+    ContactDetailsForm
 )
 
 def create_about(request):
@@ -164,3 +166,23 @@ def portfolio_list_view(request):
         'portfolio': portfolio
     }
     return render(request, 'dashboard/portfolio-list.html', context)
+
+def contact_details_view(request):
+    profile = Profile.objects.get(user=request.user)
+    try:
+        contact_details = ContactDetails.objects.get(profile=profile)
+        forms = ContactDetailsForm(instance=contact_details)
+        if request.method == 'POST':
+            forms = ContactDetailsForm(request.POST, instance=contact_details)
+            if forms.is_valid():
+                forms.save()
+    except:
+        forms = ContactDetailsForm()
+        if request.method == 'POST':
+            forms = ContactDetailsForm(request.POST)
+            if forms.is_valid():
+                forms.save()
+    context = {
+        'form': forms
+    }
+    return render(request, 'dashboard/contact-details.html', context)
