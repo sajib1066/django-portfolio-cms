@@ -8,4 +8,8 @@ def index_page(request):
 
 @login_required(login_url='authentication')
 def dashboard(request):
-    return render(request, 'dashboard/index.html')
+    theme = Theme.objects.all()
+    context = {
+        'theme': theme
+    }
+    return render(request, 'dashboard/index.html', context)

@@ -4,70 +4,17 @@
 
 {% block content %}
     <div class="row">
+        {% for theme in theme %}
         <div class="col-md-4">
             <div class="card">
-                <a href="{% url 'default-theme' %}">
+                <a href="{% url theme.theme_url %}">
                     <div class="card-body">
-                        <img src="{% static 'dashboard/theme-img/default-theme.png' %}" alt="" height="100%" width="100%">
-                        <!-- <div style="height: 200px; width: 200px; color: #fff;">
-                            <h2 style="text-align: center;">Comming Soon</h2>
-                        </div> -->
+                        <img src="{{ theme.preview.url }}" alt="" height="100%" width="100%">
                     </div>
-                    <div class="card-footer"><a href="{% url 'default-theme' %}">default-theme</a></div>
+                    <div class="card-footer"><a href="{% url theme.theme_url %}">{{ theme.name}}</a></div>
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
-                    </div>
-                </div>
-                <div class="card-footer">Theme 2</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
-                    </div>
-                </div>
-                <div class="card-footer">Theme 3</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
-                    </div>
-                </div>
-                <div class="card-footer">Theme 4</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
-                    </div>
-                </div>
-                <div class="card-footer">Theme 5</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body" style="background-color: gray;">
-                    <div style="height: 200px; width: 200px; color: #fff;">
-                        <h2 style="text-align: center;">Comming Soon</h2>
-                    </div>
-                </div>
-                <div class="card-footer">Theme 6</div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -20,9 +20,8 @@
           <ul class="nav child_menu">
             <li><a href="{% url 'theme-list' %}">All Theme</a></li>
             {% for t in theme %}
-            <li><a href="{% url 'theme-preview' t.id %}">{{ t.name|title }} {{ t.id }}</a></li>
+            <li><a href="{% url 'theme-preview' t.id %}">{{ t.name }}</a></li>
             {% endfor %}
-            <li><a href="#">Comming soon</a></li>
           </ul>
         </li>
       </ul>
