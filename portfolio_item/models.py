@@ -35,11 +35,14 @@ class Education(models.Model):
     result = models.DecimalField(max_digits=4, decimal_places=2)
     comment = models.TextField(blank=True, null=True)
 
+
     class Meta:
         unique_together = ['profile', 'degree']
 
+    
     def __str__(self):
         return self.degree
+
 
 class Experience(models.Model):
     user_profile = get_user_profile
@@ -52,6 +55,7 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.job_title
+
 
 class Skill(models.Model):
     user_profile = get_user_profile
@@ -68,6 +72,7 @@ class PortfolioCategory(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Portfolio(models.Model):
     user_profile = get_user_profile
@@ -86,6 +91,19 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CompletedTask(models.Model):
+    user_profile = get_user_profile
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE, default=user_profile)
+    projects = models.PositiveIntegerField()
+    clients = models.PositiveIntegerField()
+    partners = models.PositiveIntegerField()
+    cup_of_coffee = models.PositiveIntegerField()
+
+    def __str__(self):
+        return str(self.projects)
+
 
 class ContactDetails(models.Model):
     user_profile = get_user_profile
