@@ -7,7 +7,8 @@ from .models import (
     Experience,
     Skill,
     PortfolioCategory,
-    Portfolio
+    Portfolio,
+    ContactDetails
 )
 
 admin.site.register(About)
@@ -17,3 +18,4 @@ admin.site.register(Experience)
 admin.site.register(Skill)
 admin.site.register(PortfolioCategory)
 admin.site.register(Portfolio)
+admin.site.register(ContactDetails)

@@ -87,4 +87,14 @@ class Portfolio(models.Model):
     def __str__(self):
         return self.name
 
+class ContactDetails(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    name = models.CharField(max_length=120)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=11, unique=True)
+    address = models.TextField()
+
+    def __str__(self):
+        return self.name
+
 
