@@ -3,6 +3,7 @@
       <h3>General</h3>
       <ul class="nav side-menu">
         <li><a href="{% url 'dashboard' %}"><i class="fa fa-home"></i>Dashboard</a></li>
+        <li><a href="{% url 'profile' request.user.profile.id  %}"><i class="fa fa-user"></i>Profile</a></li>
         <li><a><i class="fa fa-edit"></i>Create Portfolio <span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu">
             <li><a href="{% url 'add-about' %}">About</a></li>
