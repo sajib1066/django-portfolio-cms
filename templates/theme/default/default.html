@@ -386,7 +386,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<i class="icon-globe-outline"></i>
 								</div>
 								<div class="colorlib-text">
-									<p><a href="#">info@domain.com</a></p>
+									<p><a href="">{{ profile.contactdetails.email }}</a></p>
 								</div>
 							</div>
 
@@ -395,7 +395,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<i class="icon-map"></i>
 								</div>
 								<div class="colorlib-text">
-									<p>198 West 21th Street, Suite 721 New York NY 10016</p>
+									<p>{{ profile.contactdetails.address }}</p>
 								</div>
 							</div>
 
@@ -404,7 +404,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 									<i class="icon-phone"></i>
 								</div>
 								<div class="colorlib-text">
-									<p><a href="tel://">+123 456 7890</a></p>
+									<p><a href="tel://{{ profile.contactdetails.phone }}">{{ profile.contactdetails.phone }}</a></p>
 								</div>
 							</div>
 						</div>
