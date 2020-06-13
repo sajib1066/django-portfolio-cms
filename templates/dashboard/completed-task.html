@@ -1,0 +1,27 @@
+{% extends 'dashboard/base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        <div class="card">
+            <div class="card-body">
+                {% csrf_token %}
+                <div class="form-group col-md-6 mb-0">
+                    {{ form.projects|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ form.clients|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ form.partners|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ form.cup_of_coffee|as_crispy_field }}
+                </div>                
+            </div>
+            <div class="card-footer d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary text-center">Save</button>
+            </div>
+        </div>
+      </form>
+{% endblock %}

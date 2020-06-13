@@ -8,6 +8,7 @@ from .models import (
     Experience,
     Skill,
     Portfolio,
+    CompletedTask,
     ContactDetails
 )
 from .forms import (
@@ -17,6 +18,7 @@ from .forms import (
     ExperienceForm,
     SkillForm,
     PortfolioForm,
+    CompletedTaskForm,
     ContactDetailsForm
 )
 
@@ -166,6 +168,24 @@ def portfolio_list_view(request):
         'portfolio': portfolio
     }
     return render(request, 'dashboard/portfolio-list.html', context)
+
+def completed_task_view(request):
+    profile = Profile.objects.get(user=request.user)
+    try:
+        completed_task = CompletedTask.objects.get(profile=profile)
+        forms = CompletedTaskForm(instance=completed_task)
+        if request.method == 'POST':
+            forms = CompletedTaskForm(request.POST, instance=completed_task)
+            if forms.is_valid():
+                forms.save()
+    except:
+        forms = CompletedTaskForm(request.POST or None)
+        if forms.is_valid():
+            forms.save()
+    context = {
+        'form': forms
+    }
+    return render(request, 'dashboard/completed-task.html', context)
 
 def contact_details_view(request):
     profile = Profile.objects.get(user=request.user)

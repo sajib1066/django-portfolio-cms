@@ -7,6 +7,7 @@ from .models import (
     Experience,
     Skill,
     Portfolio,
+    CompletedTask,
     ContactDetails
 )
 
@@ -35,6 +36,7 @@ class ServiceForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
 
 class EducationForm(forms.ModelForm):
 
@@ -99,6 +101,21 @@ class PortfolioForm(forms.ModelForm):
             'technology': forms.TextInput(attrs={'class': 'form-control'}),
             'preview': forms.TextInput(attrs={'class': 'form-control'}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),
+        }
+
+
+class CompletedTaskForm(forms.ModelForm):
+
+
+    class Meta:
+        model = CompletedTask
+        fields = ['projects', 'clients', 'partners', 'cup_of_coffee']
+
+        widgets = {
+            'projects': forms.NumberInput(attrs={'class': 'form-control'}),
+            'clients': forms.NumberInput(attrs={'class': 'form-control'}),
+            'partners': forms.NumberInput(attrs={'class': 'form-control'}),
+            'cup_of_coffee': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
 

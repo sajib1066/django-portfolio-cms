@@ -11,6 +11,7 @@ from .views import (
     add_skill,
     add_portfolio_view,
     portfolio_list_view,
+    completed_task_view,
     contact_details_view
 )
 
@@ -25,5 +26,6 @@ urlpatterns = [
     path('add-skill/', add_skill, name='add-skill'),
     path('add-portfolio/', add_portfolio_view, name='add-portfolio'),
     path('portfolio/', portfolio_list_view, name='portfolio-list'),
+    path('completed-task/', completed_task_view, name='completed-task'),
     path('contact-details/', contact_details_view, name='contact-details'),
 ]
