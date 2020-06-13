@@ -2,7 +2,6 @@ from django.views.generic import TemplateView, ListView
 from django.shortcuts import render, redirect
 
 from account.models import Profile, User
-from .forms import SelectedThemeForm
 from .models import Theme, SelectedTheme
 from portfolio_item.models import (
     Service,
