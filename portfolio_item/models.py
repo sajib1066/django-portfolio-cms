@@ -88,7 +88,8 @@ class Portfolio(models.Model):
         return self.name
 
 class ContactDetails(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user_profile = get_user_profile
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default=user_profile)
     name = models.CharField(max_length=120)
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=11, unique=True)
