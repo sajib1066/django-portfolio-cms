@@ -15,6 +15,10 @@ class DefaultThemeView(TemplateView):
     template_name = 'theme/default/default.html'
 
 
+class AshiaTemplateView(TemplateView):
+    template_name = 'theme/ashia/ashia.html'
+
+
 class ThemeList(ListView):
     model = Theme
     template_name = 'theme/theme-list.html'
