@@ -150,32 +150,7 @@ def add_portfolio_view(request):
     if request.method == 'POST':
         forms = PortfolioForm(request.POST, request.FILES)
         if forms.is_valid():
-            profile = Profile.objects.get(user=request.user)
-            name = forms.cleaned_data['name']
-            image = forms.cleaned_data['image']
-            category = forms.cleaned_data['category']
-            client_name = forms.cleaned_data['client_name']
-            client_review = forms.cleaned_data['client_review']
-            client_feedback = forms.cleaned_data['client_feedback']
-            budjet = forms.cleaned_data['budjet']
-            duration = forms.cleaned_data['duration']
-            technology = forms.cleaned_data['technology']
-            preview = forms.cleaned_data['preview']
-            description = forms.cleaned_data['description']
-            Portfolio.objects.create(
-                profile=profile,
-                name=name,
-                image=image,
-                category=category,
-                client_name=client_name,
-                client_review=client_review,
-                client_feedback=client_feedback,
-                budjet=budjet,
-                duration=duration,
-                technology=technology,
-                preview=preview,
-                description=description
-            )
+            forms.save()
             return redirect('portfolio-list')
     context = {
         'form': forms

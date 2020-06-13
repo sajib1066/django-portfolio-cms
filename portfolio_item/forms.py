@@ -72,7 +72,7 @@ class PortfolioForm(forms.ModelForm):
 
     class Meta:
         model = Portfolio
-        exclude = ('user', )
+        exclude = ('profile', )
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
