@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (
-    DefaultThemeView,
+    JaksonThemeView,
     AshiaTemplateView,
     ThemeList,
     theme_preview,
@@ -10,7 +10,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', DefaultThemeView.as_view(), name='default-theme'),
+    path('jakson/', JaksonThemeView.as_view(), name='jakson'),
     path('ashia/', AshiaTemplateView.as_view(), name='ashia'),
     path('list/', ThemeList.as_view(), name='theme-list'),
     path('preview/<theme_id>', theme_preview, name='theme-preview'),

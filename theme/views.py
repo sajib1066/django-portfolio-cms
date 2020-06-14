@@ -12,8 +12,8 @@ from portfolio_item.models import (
 )
 from .forms import SelectedThemeForm
 
-class DefaultThemeView(TemplateView):
-    template_name = 'theme/default/default.html'
+class JaksonThemeView(TemplateView):
+    template_name = 'theme/jakson/jakson.html'
 
 
 class AshiaTemplateView(TemplateView):
