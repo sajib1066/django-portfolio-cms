@@ -59,7 +59,7 @@ class ExperienceForm(forms.ModelForm):
 
     class Meta:
         model = Experience
-        exclude = ('user', )
+        exclude = ('profile', )
 
         widgets = {
             'job_title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Job Title'}),

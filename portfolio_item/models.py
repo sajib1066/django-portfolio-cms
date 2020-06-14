@@ -51,7 +51,7 @@ class Experience(models.Model):
     job_context = models.TextField()
     company_name = models.CharField(max_length=120)
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.job_title
