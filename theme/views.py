@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import ListView
 from django.shortcuts import render, redirect
 
 from account.models import Profile, User
@@ -12,12 +12,41 @@ from portfolio_item.models import (
 )
 from .forms import SelectedThemeForm
 
-class JaksonThemeView(TemplateView):
-    template_name = 'theme/jakson/jakson.html'
+def jakson_theme_view(request):
+    profile = Profile.objects.get(username=request.user.profile.username)
+    user = Profile.objects.get(user=profile.user)
+    service = Service.objects.filter(profile=profile)
+    education = Education.objects.filter(profile=profile)
+    experience = Experience.objects.filter(profile=profile)
+    skills = Skill.objects.filter(profile=profile)
+    portfolio = Portfolio.objects.filter(profile=profile)
+    context = {
+            'profile': profile,
+            'service': service,
+            'education': education,
+            'experience': experience,
+            'skills': skills,
+            'portfolio': portfolio
+        }
+    return render(request, 'theme/jakson/jakson.html', context)
 
-
-class AshiaTemplateView(TemplateView):
-    template_name = 'theme/ashia/ashia.html'
+def ashia_theme_view(request):
+    profile = Profile.objects.get(username=request.user.profile.username)
+    user = Profile.objects.get(user=profile.user)
+    service = Service.objects.filter(profile=profile)
+    education = Education.objects.filter(profile=profile)
+    experience = Experience.objects.filter(profile=profile)
+    skills = Skill.objects.filter(profile=profile)
+    portfolio = Portfolio.objects.filter(profile=profile)
+    context = {
+            'profile': profile,
+            'service': service,
+            'education': education,
+            'experience': experience,
+            'skills': skills,
+            'portfolio': portfolio
+        }
+    return render(request, 'theme/ashia/ashia.html', context)
 
 
 class ThemeList(ListView):
