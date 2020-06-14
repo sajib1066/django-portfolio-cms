@@ -50,15 +50,7 @@ def create_about(request):
 def add_service_view(request):
     forms = ServiceForm(request.POST or None)
     if forms.is_valid():
-        user = request.user
-        profile = Profile.objects.get(user=user)
-        name = forms.cleaned_data['name']
-        description = forms.cleaned_data['description']
-        Service.objects.create(
-            profile=profile,
-            name=name,
-            description=description
-        )
+        forms.save()
         return redirect('service')
     context = {
         'form': forms
@@ -76,21 +68,7 @@ def service_list_view(request):
 def create_education(request):
     forms = EducationForm(request.POST or None)
     if forms.is_valid():
-        user = request.user
-        profile = Profile.objects.get(user=user)
-        degree = forms.cleaned_data['degree']
-        board = forms.cleaned_data['board']
-        institute = forms.cleaned_data['institute']
-        passing_year = forms.cleaned_data['passing_year']
-        result = forms.cleaned_data['result']
-        Education.objects.create(
-            profile=profile,
-            degree=degree,
-            board=board,
-            institute=institute,
-            passing_year=passing_year,
-            result=result
-        )
+        forms.save()
         return redirect('education-list')
     context = {
         'forms': forms
@@ -109,20 +87,7 @@ def education_list(request):
 def add_experience(request):
     forms = ExperienceForm(request.POST or None)
     if forms.is_valid():
-        profile = Profile.objects.get(user=request.user)
-        job_title = forms.cleaned_data['job_title']
-        job_context = forms.cleaned_data['job_context']
-        company_name = forms.cleaned_data['company_name']
-        start_date = forms.cleaned_data['start_date']
-        end_date = forms.cleaned_data['end_date']
-        Experience.objects.create(
-            profile=profile,
-            job_title=job_title,
-            job_context=job_context,
-            company_name=company_name,
-            start_date=start_date,
-            end_date=end_date
-        )
+        forms.save()
         return redirect('experience-list')
     context = {
         'form': forms
