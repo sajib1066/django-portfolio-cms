@@ -10,6 +10,7 @@ from portfolio_item.models import (
     Skill,
     Portfolio
 )
+from .forms import SelectedThemeForm
 
 class DefaultThemeView(TemplateView):
     template_name = 'theme/default/default.html'
@@ -44,6 +45,22 @@ def theme_setup(request, theme_id):
         pass
     SelectedTheme.objects.create(theme=theme, user=usr)
     return redirect('dashboard')
+
+def theme_setting(request, user_id):
+    user = User.objects.get(id=user_id)
+    try:
+        select_theme = SelectedTheme.objects.get(user=user)
+        forms = SelectedThemeForm(instance=select_theme)
+        if request.method == 'POST':
+            forms = SelectedThemeForm(request.POST, instance=select_theme)
+            if forms.is_valid():
+                forms.save()
+        context = {
+            'form': forms
+        }
+        return render(request, 'dashboard/setting.html', context)
+    except:
+        return redirect('theme-list')
 
 def view_portfolio(request, username):
     profile = Profile.objects.get(username=username)
