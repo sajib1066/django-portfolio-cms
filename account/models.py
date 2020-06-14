@@ -94,7 +94,7 @@ class Profile(models.Model):
         ('female', 'Female')
     )
     gender = models.CharField(choices=gender_choice, max_length=6, blank=True, null=True)
-    birth_date = models.DateTimeField(blank=True, null=True)
+    birth_date = models.DateField(blank=True, null=True)
     country = models.CharField(max_length=30, blank=True, null=True)
     address = models.CharField(max_length=220, blank=True, null=True)
     phone_number = models.CharField(max_length=11, unique=True, blank=True, null=True)
