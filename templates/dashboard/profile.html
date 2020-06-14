@@ -24,6 +24,9 @@
                 <div class="form-group col-md-6 mb-0">
                     {{ forms.username|as_crispy_field }}
                 </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.birth_date|as_crispy_field }}
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
@@ -31,6 +34,14 @@
                 </div>
                 <div class="form-group col-md-6 mb-0">
                     {{ forms.phone_number|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.website|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.market_place_profile|as_crispy_field }}
                 </div>
             </div>
             <div class="form-row">
