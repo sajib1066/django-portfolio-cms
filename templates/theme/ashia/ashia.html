@@ -279,7 +279,11 @@
                                     <div class="circle-3"></div>
                                     <div class="floating"></div>
                                     <div class="personal-image rounded-circle">
-                                        <img src="{% static 'theme/ashia/img/hero-personal-man.jpg' %}" alt="/" class="rounded-circle img-fluid">
+                                        {% if profile.photo %}
+                                            <img src="{{ profile.photo.url }}" alt="/" class="rounded-circle img-fluid">
+                                        {% else %}
+                                            <img src="{% static 'theme/ashia/img/hero-personal-man.jpg' %}" alt="/" class="rounded-circle img-fluid">
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
