@@ -30,6 +30,14 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6 mb-0">
+                    {{ forms.country|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-0">
+                    {{ forms.address|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-0">
                     {{ forms.gender|as_crispy_field }}
                 </div>
                 <div class="form-group col-md-6 mb-0">

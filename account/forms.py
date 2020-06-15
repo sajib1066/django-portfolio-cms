@@ -28,6 +28,8 @@ class ProfileForm(forms.ModelForm):
             'gender': forms.Select(attrs={'class': 'form-control'}),
             'birth_date': forms.TextInput(attrs={'class': 'form-control', 'type': 'date'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'country': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
             'website': forms.TextInput(attrs={'class': 'form-control'}),
             'market_place_profile': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook': forms.TextInput(attrs={'class': 'form-control'}),
