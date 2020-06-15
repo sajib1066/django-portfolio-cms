@@ -312,7 +312,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="image-border">
-                                    <img src="assets/img/about-03.jpg" alt="/">
+                                    {% if profile.photo %}
+                                    <img src="{{ profile.photo.url }}" alt="/">
+                                    {% else %}
+                                    <img src="{% static 'theme/ashia/img/about-03.jpg' %}" alt="/">
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="col-lg-6 mt-4 mt-lg-0">
@@ -325,13 +329,13 @@
                                                     <p>Birthday : <span> {{ profile.birth_date }}</span></p>
                                                 </li>
                                                 <li>
-                                                    <p>Website : <span> www.retrina.com</span></p>
+                                                    <p>Website : <span> {{ profile.website }}</span></p>
                                                 </li>
                                                 <li>
-                                                    <p>Phone : <span> +123 456 7890</span></p>
+                                                    <p>Phone : <span> {{ profile.phone_number }}</span></p>
                                                 </li>
                                                 <li>
-                                                    <p>City : <span> New York, USA</span></p>
+                                                    <p>City : <span> {{ profile.address }}</span></p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -354,10 +358,10 @@
                                     </div>
                                 </div>
                                 <div class="button-border mt-3 mb-lg-0 mr-4">
-                                    <a href="javascript:void(0);" class="pill-button">Download Cv</a>
+                                    <a href="{{ profile.about.resume.url }}" class="pill-button">Download Cv</a>
                                 </div>
                                 <div class="button-border mt-3 mb-lg-0 to-contact">
-                                    <a href="#contact" class="pill-button">Hire Me</a>
+                                    <a href="{{ profile.market_place_profile }}" class="pill-button">Hire Me</a>
                                 </div>
                             </div>
                         </div>
