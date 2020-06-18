@@ -71,9 +71,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
+                                {% if request.user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                                </li>
+                                {% else %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'authentication' %}">Signin</a>
                                 </li>
+                                {% endif %}
                             </ul>
                             <!-- Search & Shop Btn Area -->
                             <div class="fancy-search-and-shop-area">
