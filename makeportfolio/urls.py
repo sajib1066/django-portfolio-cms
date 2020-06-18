@@ -26,6 +26,7 @@ urlpatterns = [
     path('', index_page, name='home'),
     path('usr/<str:username>/', view_portfolio, name='view-portfolio'),
     path('account/', include('account.urls')),
+    path('account/', include('django.contrib.auth.urls')),
     path('dashboard/', dashboard, name='dashboard'),
     path('theme/', include('theme.urls')),
     path('portfolio/', include('portfolio_item.urls')),
