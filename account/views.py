@@ -4,12 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegistrationForm, ProfileForm
 from .models import User, Profile
 
-def authentication(request):
+def user_login(request):
     loginforms = LoginForm()
-    registrationforms = RegistrationForm()
     if request.method == 'POST':
         loginforms = LoginForm(request.POST)
-        registrationforms = RegistrationForm(request.POST)
         if loginforms.is_valid():
             email = loginforms.cleaned_data['email']
             password = loginforms.cleaned_data['password']
@@ -17,6 +15,16 @@ def authentication(request):
             if user:
                 login(request, user)
                 return redirect('dashboard')
+            
+    context = {
+        'login': loginforms,
+    }
+    return render(request, 'dashboard/auth/user_login.html', context)
+
+def user_registration(request):
+    registrationforms = RegistrationForm()
+    if request.method == 'POST':
+        registrationforms = RegistrationForm(request.POST)
         if registrationforms.is_valid():
             first_name = registrationforms.cleaned_data['first_name']
             last_name = registrationforms.cleaned_data['last_name']
@@ -28,17 +36,16 @@ def authentication(request):
             if password == confirm_password:
                 user = User.objects.create_user(email=email, password=password)
                 Profile.objects.create(user=user, name=name, username=username)
-            return redirect('authentication')
+            return redirect('user_login')
             
     context = {
-        'login': loginforms,
         'registration': registrationforms
     }
-    return render(request, 'dashboard/login.html', context)
+    return render(request, 'dashboard/auth/user_registration.html', context)
 
 def logout_user(request):
     logout(request)
-    return redirect('authentication')
+    return redirect('user_login')
 
 def user_profile(request, user_id):
     user = User.objects.get(id=user_id)
