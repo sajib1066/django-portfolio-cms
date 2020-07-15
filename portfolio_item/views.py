@@ -23,8 +23,7 @@ from .forms import (
 )
 
 def create_about(request):
-    usr = request.user
-    profile = Profile.objects.get(user=usr)
+    profile = Profile.objects.get(user=request.user)
     try:
         about = About.objects.get(profile=profile)
         forms = AboutForm(instance=about)
@@ -42,6 +41,7 @@ def create_about(request):
             forms = AboutForm(request.POST, request.FILES)
             if forms.is_valid():
                 forms.save()
+                return redirect('dashboard')
         context = {
             'form': forms
         }
