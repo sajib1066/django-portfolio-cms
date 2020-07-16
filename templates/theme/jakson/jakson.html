@@ -159,7 +159,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 									<div class="hire">
 										<h2>I am happy to know you <br>that {{ profile.completedtask.projects }}+ projects done sucessfully!</h2>
-										<a href="#" class="btn-hire">Hire me</a>
+										{% if profile.market_place_profile %}
+											<a href="{{ profile.market_place_profile }}" class="btn-hire">Hire me</a>
+										{% endif %}
 									</div>
 								</div>
 							</div>
