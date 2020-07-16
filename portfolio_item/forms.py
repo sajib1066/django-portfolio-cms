@@ -43,7 +43,7 @@ class EducationForm(forms.ModelForm):
 
     class Meta:
         model = Education
-        fields = ['degree', 'board', 'institute', 'passing_year', 'result']
+        fields = ['degree', 'board', 'institute', 'passing_year', 'result', 'comment']
 
         widgets = {
             'degree': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your degree title'}),
@@ -51,6 +51,7 @@ class EducationForm(forms.ModelForm):
             'institute': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your institute name'}),
             'passing_year': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your passing year'}),
             'result': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your result'}),
+            'comment': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment'}),
         }
 
 

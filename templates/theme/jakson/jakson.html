@@ -282,9 +282,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 														  <p>Passing Year: {{ education.passing_year }}</p>
 														  <p>Result: {{ education.result }}</p>
 										      		</div>
-										      		<div class="col-md-6">
-										      			<p>{{ education.comment }}</p>
-										      		</div>
+													{% if education.comment %}  
+														<div class="col-md-6">
+															<p>{{ education.comment }}</p>
+														</div>
+													{% endif %}
 										      	</div>
 									         </div>
 									    </div>
