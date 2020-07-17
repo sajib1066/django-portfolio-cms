@@ -317,7 +317,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 										<i class="icon-pen2"></i>
 									</div>
 									<div class="timeline-label">
-										<h2><a href="#">{{ experience.job_title }}</a> <span>{{ experience.start_date }}-{{ experience.end_date }}</span></h2>
+										<h2><a href="#">{{ experience.job_title }}</a> <span>{{ experience.start_date }}-{% if experience.end_date %}{{ experience.end_date }}{% else %}Running{% endif %}</span></h2>
 										<p>{{ experience.job_context }}</p>
 									</div>
 									</div>

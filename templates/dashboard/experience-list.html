@@ -35,7 +35,11 @@
                                 <td>{{ exp.job_context }}</td>
                                 <td>{{ exp.company_name }}</td>
                                 <td>{{ exp.start_date }}</td>
-                                <td>{{ exp.end_date }}</td>
+                                {% if exp.end_date %}
+                                    <td>{{ exp.end_date }}</td>
+                                {% else %}
+                                    <td>Running</td>
+                                {% endif %}
                             </tr>
                             {% endfor %}
                         </tbody>
