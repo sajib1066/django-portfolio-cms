@@ -507,6 +507,11 @@
                                                     <div class="skillbar-bar fill-skillbar"></div>
                                                     <div class="skill-bar-percent">75%</div>
                                                 </div>
+                                                <div class="skillbar clearfix" data-percent="75%">
+                                                    <div class="skillbar-title"><span>PHP</span></div>
+                                                    <div class="skillbar-bar fill-skillbar"></div>
+                                                    <div class="skill-bar-percent">75%</div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -556,66 +561,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <!-- Item 01 -->
-                            <div class="col-lg-4 text-center text-md-left">
-                                <div class="services-item box-hover-border">
-                                    <div class="text-center p-4">
-                                        <i class="lni-brush-alt size-md base-color"></i>
-                                        <h5 class="text-dark">Graphic Design</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 02 -->
+                            {% for service in service %}
                             <div class="col-lg-4 text-center text-md-lef">
                                 <div class="services-item box-hover-border">
                                     <div class="text-center p-4">
                                         <i class="lni-check-mark-circle size-md base-color"></i>
-                                        <h5 class="text-dark">Bootstrap support</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
+                                        <h5 class="text-dark">{{ service.name }}</h5>
+                                        <p class="text-muted mb-0">{{ service.description }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Item 03 -->
-                            <div class="col-lg-4 text-center text-md-left">
-                                <div class="services-item box-hover-border">
-                                    <div class="text-center p-4">
-                                        <i class="lni-heart size-md base-color"></i>
-                                        <h5 class="text-dark">Portfolio of works</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 04 -->
-                            <div class="col-lg-4 text-center text-md-left">
-                                <div class="services-item box-hover-border">
-                                    <div class="text-center p-4">
-                                        <i class="lni-mobile size-md base-color"></i>
-                                        <h5 class="text-dark">Responsive Theme</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 05 -->
-                            <div class="col-lg-4 text-center text-md-left">
-                                <div class="services-item box-hover-border">
-                                    <div class="text-center p-4">
-                                        <i class="lni-world size-md base-color"></i>
-                                        <h5 class="text-dark">Go Beyond Limits</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Item 06 -->
-                            <div class="col-lg-4 text-center text-md-left">
-                                <div class="services-item box-hover-border">
-                                    <div class="text-center p-4">
-                                        <i class="lni-cup size-md base-color"></i>
-                                        <h5 class="text-dark">Premium Slider</h5>
-                                        <p class="text-muted mb-0">In a professional context it often happens that private clients corder a publication to be made.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
