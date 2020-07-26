@@ -24,7 +24,7 @@ from theme.views import view_portfolio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='home'),
-    path('<str:username>/', view_portfolio, name='view-portfolio'),
+    path('user/<str:username>/', view_portfolio, name='view-portfolio'),
     path('account/', include('account.urls')),
     path('account/', include('django.contrib.auth.urls')),
     path('dashboard/', dashboard, name='dashboard'),
