@@ -348,10 +348,12 @@
                                                     <p>Degree : <span> Master</span></p>
                                                 </li>
                                                 <li>
-                                                    <p>Mail : <span> <a href="https://retrina.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81f2e0ecf1ede4c1f3e4f5f3e8efe0afe2eeec">[email&#160;protected]</a></span></p>
+                                                    <p>Mail : <span>{{ profile.user.email }}</span></p>
                                                 </li>
                                                 <li>
-                                                    <p>Freelance : <span> Available</span></p>
+                                                    {% if profile.market_place_profile %}
+                                                        <p>Freelance : <span> Available</span></p>
+                                                    {% endif %}
                                                 </li>
                                             </ul>
                                         </div>
