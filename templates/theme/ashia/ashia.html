@@ -196,10 +196,18 @@
                 <span>Follow Me</span>
             </div>
             <div class="social">
-                <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-github"></i></a>
-                <a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
+                {% if profile.facebook %}
+                    <a href="{{ profile.facebook }}"><i class="fa fa-facebook"></i></a>
+                {% endif %}
+                {% if profile.twitter %}
+                    <a href="{{ profile.twitter }}"><i class="fa fa-twitter"></i></a>
+                {% endif %}
+                {% if profile.github %}
+                    <a href="{{ profile.github }}"><i class="fa fa-github"></i></a>
+                {% endif %}
+                {% if profile.linkedin %}
+                    <a href="{{ profile.linkedin }}"><i class="fa fa-linkedin"></i></a>
+                {% endif %}
             </div>
         </div>
 
