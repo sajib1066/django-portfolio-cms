@@ -367,12 +367,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                {% if profile.about.resume %}
                                 <div class="button-border mt-3 mb-lg-0 mr-4">
                                     <a href="{{ profile.about.resume.url }}" class="pill-button">Download Cv</a>
                                 </div>
+                                {% endif %}
+                                {% if profile.market_place_profile %}
                                 <div class="button-border mt-3 mb-lg-0 to-contact">
                                     <a href="{{ profile.market_place_profile }}" class="pill-button">Hire Me</a>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                         <!-- Count up Start -->
