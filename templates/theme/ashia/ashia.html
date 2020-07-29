@@ -808,7 +808,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <h5 class="text-dark mb-0">Call Us On</h5>
-                                        <small class="text-muted">+123 456 7890</small>
+                                        <small class="text-muted">{{ profile.phone_number }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -819,7 +819,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <h5 class="text-dark mb-0 contact_detail-title">Visit Office</h5>
-                                        <small class="text-muted">24 Street, New York, United State.</small>
+                                        <small class="text-muted">{{ profile.address }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -830,7 +830,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <h5 class="text-dark mb-0">Email Us At</h5>
-                                        <small class="text-muted"><a href="https://retrina.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6001020320070d01090c4e030f0d">[email&#160;protected]</a></small>
+                                        <small class="text-muted">{{ profile.user.email }}</small>
                                     </div>
                                 </div>
                             </div>
